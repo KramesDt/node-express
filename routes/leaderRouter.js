@@ -1,11 +1,11 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
-const dishRouter = express.Router();
+const leaderRouter = express.Router();
 
-dishRouter.use(bodyParser.json());
+leaderRouter.use(bodyParser.json());
 
-dishRouter
+leaderRouter
   .route("/")
 
   .all((req, res, next) => {
@@ -15,12 +15,12 @@ dishRouter
   })
 
   .get((req, res, next) => {
-    res.end("Will send all the dishes to you");
+    res.end("Will send all the  leaderes to you");
   })
 
   .post((req, res, next) => {
     res.end(
-      "Will add the dish: " +
+      "Will add the  leader: " +
         req.body.name +
         "with details: " +
         req.body.description
@@ -29,29 +29,29 @@ dishRouter
 
   .put((req, res, next) => {
     res.statusCode = 403;
-    res.end("PUT operation not supported on dishes");
+    res.end("PUT operation not supported on  leader");
   })
 
   .delete((req, res, next) => {
-    res.end("Deleting all the dishes!");
+    res.end("Deleting all the  leaders!");
   });
 
-//dishes/:dishId
-dishRouter
-  .route("/:dishId")
+//leader/: leaderId
+leaderRouter
+  .route("/:leaderId")
   .get((req, res, next) => {
-    res.end("Will send of the dish" + req.params.dishId);
+    res.end("Will send all the  leaders: " + req.params.leaderId);
   })
 
   .post((req, res, next) => {
     res.statusCode = 403;
-    res.end("POST operation not supported on /dishes/" + req.params.dishId);
+    res.end("POST operation not supported on / leaders/" + req.params.leaderId);
   })
 
   .put((req, res, next) => {
-    res.write("Updating the dish: " + req.params.dishId + "\n");
+    res.write("Updating the  leader: " + req.params.leaderId + "\n");
     res.end(
-      "Will update the dish: " +
+      "Will update the  leader: " +
         req.body.name +
         " with details " +
         req.body.description
@@ -59,7 +59,7 @@ dishRouter
   })
 
   .delete((req, res, next) => {
-    res.end("Deleting the dish!: " + req.params.dishId);
+    res.end("Deleting the  leader!: " + req.params.leaderId);
   });
 
-module.exports = dishRouter;
+module.exports = leaderRouter;

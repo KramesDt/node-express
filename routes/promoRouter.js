@@ -1,11 +1,11 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
-const dishRouter = express.Router();
+const promoRouter = express.Router();
 
-dishRouter.use(bodyParser.json());
+promoRouter.use(bodyParser.json());
 
-dishRouter
+promoRouter
   .route("/")
 
   .all((req, res, next) => {
@@ -15,12 +15,12 @@ dishRouter
   })
 
   .get((req, res, next) => {
-    res.end("Will send all the dishes to you");
+    res.end("Will send all the  promos to you");
   })
 
   .post((req, res, next) => {
     res.end(
-      "Will add the dish: " +
+      "Will add the  promo: " +
         req.body.name +
         "with details: " +
         req.body.description
@@ -29,29 +29,29 @@ dishRouter
 
   .put((req, res, next) => {
     res.statusCode = 403;
-    res.end("PUT operation not supported on dishes");
+    res.end("PUT operation not supported on  promotions");
   })
 
   .delete((req, res, next) => {
-    res.end("Deleting all the dishes!");
+    res.end("Deleting all the  promotions!");
   });
 
-//dishes/:dishId
-dishRouter
-  .route("/:dishId")
+// promoes/: promoId
+promoRouter
+  .route("/:promoId")
   .get((req, res, next) => {
-    res.end("Will send of the dish" + req.params.dishId);
+    res.end("Will send all of the  promotions" + req.params.promoId);
   })
 
   .post((req, res, next) => {
     res.statusCode = 403;
-    res.end("POST operation not supported on /dishes/" + req.params.dishId);
+    res.end("POST operation not supported on / promo/" + req.params.promoId);
   })
 
   .put((req, res, next) => {
-    res.write("Updating the dish: " + req.params.dishId + "\n");
+    res.write("Updating the  promo: " + req.params.promoId + "\n");
     res.end(
-      "Will update the dish: " +
+      "Will update the  promo: " +
         req.body.name +
         " with details " +
         req.body.description
@@ -59,7 +59,7 @@ dishRouter
   })
 
   .delete((req, res, next) => {
-    res.end("Deleting the dish!: " + req.params.dishId);
+    res.end("Deleting the  promo!: " + req.params.promoId);
   });
 
-module.exports = dishRouter;
+module.exports = promoRouter;
